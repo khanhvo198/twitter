@@ -13,7 +13,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 @Data
 @SuperBuilder
 @JsonInclude(NON_NULL)
-public class TweetResponseHeader {
+public class TweetHeaderResponse {
     private LocalDateTime timestamp;
     private int statusCode;
     private HttpStatus status;
