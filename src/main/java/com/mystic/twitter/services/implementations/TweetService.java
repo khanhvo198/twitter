@@ -19,7 +19,7 @@ public class TweetService implements ITweetService {
         return tweetRepository.findAll();
     }
 
-    public Tweet createdTweet(Tweet tweet) {
+    public Tweet createTweet(Tweet tweet) {
         return tweetRepository.save(tweet);
     }
 

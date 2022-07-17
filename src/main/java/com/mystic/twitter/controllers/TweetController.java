@@ -40,7 +40,7 @@ public class TweetController {
                 TweetHeaderResponse.builder()
                         .timestamp(now())
                         .message("Created Successfully")
-                        .data(of("tweet", tweetService.createdTweet(tweet)))
+                        .data(of("tweet", tweetService.createTweet(tweet)))
                         .status(CREATED)
                         .statusCode(CREATED.value())
                         .build()
