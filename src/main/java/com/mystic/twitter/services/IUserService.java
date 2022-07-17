@@ -1,4 +1,4 @@
 package com.mystic.twitter.services;
 
-public interface IUserDetailService {
+public interface IUserService {
 }

@@ -1,2 +1,15 @@
-package com.mystic.twitter.repository;public interface UserRepository {
+package com.mystic.twitter.repository;
+
+import com.mystic.twitter.dtos.UserDTO;
+import com.mystic.twitter.models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User,Long> {
+    Optional<User> findUserByEmail(String email);
+
+
+
+
 }

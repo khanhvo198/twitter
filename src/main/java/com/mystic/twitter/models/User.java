@@ -20,6 +20,9 @@ public class User implements UserDetails {
 
     private String email;
 
+    private String firstName;
+
+    private String lastName;
     private String password;
 
     @ManyToMany
@@ -44,12 +47,12 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return email;
     }
 
     @Override
