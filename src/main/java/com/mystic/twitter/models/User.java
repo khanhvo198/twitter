@@ -1,18 +1,23 @@
 package com.mystic.twitter.models;
 
+import com.mystic.twitter.role.Role;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "my_user")
+@NoArgsConstructor
 public class User implements UserDetails {
 
     @Id
@@ -24,6 +29,8 @@ public class User implements UserDetails {
 
     private String lastName;
     private String password;
+
+    private Role role;
 
     @ManyToMany
     @JoinTable(name = "user_subscriptions",
@@ -42,7 +49,9 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
+        return Collections.singletonList(authority);
+
     }
 
     @Override
