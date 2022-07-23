@@ -1,11 +1,13 @@
 package com.mystic.twitter.dtos;
 
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class UserDTO {
-    private final String email;
-    private final String firstName;
-    private final String lastName;
+    private String email;
+    private String firstName;
+    private String lastName;
 }
