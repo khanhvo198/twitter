@@ -35,9 +35,8 @@ public class AuthenticationService {
 
 
   public Map<String, Object> login(String email, String password) {
-
     try {
-      authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email,password)); 
+      authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email,password));
     } catch (Exception e) {
       throw new ApiRequestException("Incorrect username or password", HttpStatus.FORBIDDEN);
     }
@@ -54,8 +53,10 @@ public class AuthenticationService {
 
   public String registration(String email, String password, String firstName, String lastName  ) {
     Optional<User> existingUser = userRepo.findUserByEmail(email);
+    
     if(existingUser.isPresent()) {
-      return "Email has already been taken";
+      String message = "Email has already been taken";
+      throw new ApiRequestException(message, HttpStatus.FORBIDDEN);
     } else {
       User user = new User();
       user.setEmail(email);
@@ -67,7 +68,4 @@ public class AuthenticationService {
       return "Registration success";
     }
   }
-
-
-
 }
