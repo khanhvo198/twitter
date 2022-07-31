@@ -27,7 +27,7 @@ public class AuthenticationController {
 
   @PostMapping("/login")
   public ResponseEntity<?> login(@RequestBody AuthenticationRequest request) {
-
+      
     Map<String, Object> data = authenticationService.login(request.getEmail(), request.getPassword());
 
     return ResponseEntity.ok(

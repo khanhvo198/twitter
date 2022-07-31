@@ -1,13 +1,14 @@
 package com.mystic.twitter.services.implementations;
 
-import com.mystic.twitter.dtos.request.TweetRequest;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.mystic.twitter.models.Tweet;
 import com.mystic.twitter.repository.TweetRepository;
 import com.mystic.twitter.services.ITweetService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
