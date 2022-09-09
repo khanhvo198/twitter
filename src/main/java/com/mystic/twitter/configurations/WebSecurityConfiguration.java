@@ -1,6 +1,5 @@
 package com.mystic.twitter.configurations;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,15 +26,15 @@ public class WebSecurityConfiguration {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-      http
-              .csrf().disable()
-              .authorizeHttpRequests((authz) -> authz
-                      .antMatchers("/api/v1/auth/**").permitAll()
-                      .anyRequest().authenticated())
-              .httpBasic(Customizer.withDefaults())
-              .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+    http
+        .csrf().disable()
+        .authorizeHttpRequests((authz) -> authz
+            .antMatchers("/api/v1/auth/**").permitAll()
+            .anyRequest().authenticated())
+        .httpBasic(Customizer.withDefaults())
+        .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
-      return http.build();
+    return http.build();
   }
 
   @Bean
@@ -45,6 +44,6 @@ public class WebSecurityConfiguration {
 
   @Bean
   AuthenticationManager auth(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-      return authenticationConfiguration.getAuthenticationManager();
+    return authenticationConfiguration.getAuthenticationManager();
   }
 }

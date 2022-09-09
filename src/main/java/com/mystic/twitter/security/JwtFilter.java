@@ -17,19 +17,20 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Component
 public class JwtFilter extends OncePerRequestFilter {
-    private final JwtService jwtService;
+  private final JwtService jwtService;
 
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+  @Override
+  protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+      throws ServletException, IOException {
 
-        String token = jwtService.resolveToken(request);
-        if(token != null && jwtService.isValidToken(token)) {
-            Authentication auth = jwtService.getAuthentication(token);
-            if(auth != null) {
-                SecurityContextHolder.getContext().setAuthentication(auth);
-            }
-        }
-
-        filterChain.doFilter(request,response);
+    String token = jwtService.resolveToken(request);
+    if (token != null && jwtService.isValidToken(token)) {
+      Authentication auth = jwtService.getAuthentication(token);
+      if (auth != null) {
+        SecurityContextHolder.getContext().setAuthentication(auth);
+      }
     }
+
+    filterChain.doFilter(request, response);
+  }
 }

@@ -1,11 +1,11 @@
 package com.mystic.twitter.services;
 
-import com.mystic.twitter.models.Tweet;
-
 import java.util.List;
+
+import com.mystic.twitter.models.Tweet;
 
 public interface ITweetService {
 
-    List<Tweet> findAllTweet();
+  List<Tweet> findAllTweet();
 
 }

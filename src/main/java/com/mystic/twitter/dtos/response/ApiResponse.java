@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 
-
-
 @Data
 @SuperBuilder
 public class ApiResponse {
@@ -18,5 +16,5 @@ public class ApiResponse {
   private HttpStatus status;
   private String reason;
   private String message;
-  private Map<?,?> data;
+  private Map<?, ?> data;
 }

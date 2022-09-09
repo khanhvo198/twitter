@@ -11,19 +11,17 @@ import com.mystic.twitter.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
-
 @RequiredArgsConstructor
 @Service
 public class UserDetailService implements UserDetailsService {
 
-    private final UserRepository userRepository;
+  private final UserRepository userRepository;
 
+  @Override
+  public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    return userRepository
+        .findUserByEmail(email)
+        .orElseThrow(() -> new ApiRequestException("User " + email + "not found", HttpStatus.NOT_FOUND));
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return userRepository
-                        .findUserByEmail(email)
-                        .orElseThrow(() -> new ApiRequestException("User " + email + "not found", HttpStatus.NOT_FOUND));
-
-    }
+  }
 }

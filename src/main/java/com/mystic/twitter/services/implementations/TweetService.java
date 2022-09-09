@@ -13,16 +13,15 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class TweetService implements ITweetService {
-    TweetRepository tweetRepository;
+  TweetRepository tweetRepository;
 
-    @Override
-    public List<Tweet> findAllTweet() {
-        return tweetRepository.findAll();
-    }
+  @Override
+  public List<Tweet> findAllTweet() {
+    return tweetRepository.findAll();
+  }
 
-    public Tweet createTweet(Tweet tweet) {
-        return tweetRepository.save(tweet);
-    }
-
+  public Tweet createTweet(Tweet tweet) {
+    return tweetRepository.save(tweet);
+  }
 
 }

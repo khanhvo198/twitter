@@ -1,6 +1,5 @@
 package com.mystic.twitter.dtos;
 
-
 import lombok.Getter;
 import lombok.Setter;
 

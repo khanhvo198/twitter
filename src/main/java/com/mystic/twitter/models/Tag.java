@@ -1,6 +1,5 @@
 package com.mystic.twitter.models;
 
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,16 +15,15 @@ import lombok.Setter;
 @Setter
 public class Tag implements Serializable {
 
-    @Id
-    private Long id;
+  @Id
+  private Long id;
 
-    private Long count;
+  private Long count;
 
-    @ManyToMany(mappedBy = "tags")
-    private List<Tweet> tweets;
+  @ManyToMany(mappedBy = "tags")
+  private List<Tweet> tweets;
 
-    @ManyToMany(mappedBy = "tags")
-    private List<Comment> comments;
-
+  @ManyToMany(mappedBy = "tags")
+  private List<Comment> comments;
 
 }

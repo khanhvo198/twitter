@@ -1,6 +1,5 @@
 package com.mystic.twitter.controllers;
 
-
 import static java.time.LocalDateTime.now;
 import static java.util.Map.of;
 import static org.springframework.http.HttpStatus.CREATED;
@@ -24,36 +23,30 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/tweets")
 public class TweetController {
 
-    TweetService tweetService;
-    @GetMapping
-    public ResponseEntity<TweetHeaderResponse> index () {
-        return ResponseEntity.ok(
-                TweetHeaderResponse.builder()
-                        .timestamp(now())
-                        .message("Get all tweet success")
-                        .status(OK)
-                        .statusCode(OK.value())
-                        .data(of("tweets",tweetService.findAllTweet()))
-                        .build()
-        );
-    }
+  TweetService tweetService;
 
+  @GetMapping
+  public ResponseEntity<TweetHeaderResponse> index() {
+    return ResponseEntity.ok(
+        TweetHeaderResponse.builder()
+            .timestamp(now())
+            .message("Get all tweet success")
+            .status(OK)
+            .statusCode(OK.value())
+            .data(of("tweets", tweetService.findAllTweet()))
+            .build());
+  }
 
-    @PostMapping
-    public ResponseEntity<TweetHeaderResponse> create(@RequestBody Tweet tweet ) {
-        return ResponseEntity.ok(
-                TweetHeaderResponse.builder()
-                        .timestamp(now())
-                        .message("Created Successfully")
-                        .data(of("tweet", tweetService.createTweet(tweet)))
-                        .status(CREATED)
-                        .statusCode(CREATED.value())
-                        .build()
-        );
-    }
-
-
-
-
+  @PostMapping
+  public ResponseEntity<TweetHeaderResponse> create(@RequestBody Tweet tweet) {
+    return ResponseEntity.ok(
+        TweetHeaderResponse.builder()
+            .timestamp(now())
+            .message("Created Successfully")
+            .data(of("tweet", tweetService.createTweet(tweet)))
+            .status(CREATED)
+            .statusCode(CREATED.value())
+            .build());
+  }
 
 }
