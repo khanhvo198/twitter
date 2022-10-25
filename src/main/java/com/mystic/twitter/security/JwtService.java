@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 public class JwtService {
   private final UserDetailService userService;
 
-  private static final String authenticationHeader = "Authentication";
+  private static final String authenticationHeader = "Authorization";
   private final String secretKey = "this-is-secret-key";
 
   public String generateToken(String email, String role) {
@@ -42,7 +42,11 @@ public class JwtService {
   }
 
   public String resolveToken(HttpServletRequest request) {
-    return request.getHeader(authenticationHeader);
+    String token = request.getHeader(authenticationHeader);
+    if (token == null) {
+      return null;
+    }
+    return token.substring(7);
   }
 
   public Authentication getAuthentication(String token) {

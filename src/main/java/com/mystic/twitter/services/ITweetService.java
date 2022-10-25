@@ -8,4 +8,5 @@ public interface ITweetService {
 
   List<Tweet> findAllTweet();
 
+  Tweet createTweet(String text);
 }

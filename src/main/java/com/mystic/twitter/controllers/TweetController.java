@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mystic.twitter.dtos.request.TweetRequest;
 import com.mystic.twitter.dtos.response.TweetHeaderResponse;
 import com.mystic.twitter.models.Tweet;
 import com.mystic.twitter.services.implementations.TweetService;
@@ -23,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/tweets")
 public class TweetController {
 
-  TweetService tweetService;
+  private final TweetService tweetService;
 
   @GetMapping
   public ResponseEntity<TweetHeaderResponse> index() {
@@ -38,12 +39,12 @@ public class TweetController {
   }
 
   @PostMapping
-  public ResponseEntity<TweetHeaderResponse> create(@RequestBody Tweet tweet) {
+  public ResponseEntity<TweetHeaderResponse> create(@RequestBody TweetRequest request) {
     return ResponseEntity.ok(
         TweetHeaderResponse.builder()
             .timestamp(now())
             .message("Created Successfully")
-            .data(of("tweet", tweetService.createTweet(tweet)))
+            .data(of("tweet", tweetService.createTweet(request.getText())))
             .status(CREATED)
             .statusCode(CREATED.value())
             .build());

@@ -35,10 +35,14 @@ public class User implements UserDetails {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(updatable = false, nullable = false)
   private Long id;
+
   @Column(unique = true)
   private String email;
+
   private String firstName;
+
   private String lastName;
+
   private String password;
 
   private Role role;
