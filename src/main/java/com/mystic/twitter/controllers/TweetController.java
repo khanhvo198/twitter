@@ -44,7 +44,7 @@ public class TweetController {
         TweetHeaderResponse.builder()
             .timestamp(now())
             .message("Created Successfully")
-            .data(of("tweet", tweetService.createTweet(request.getText())))
+            .data(of("tweet", tweetService.createTweet(request)))
             .status(CREATED)
             .statusCode(CREATED.value())
             .build());
