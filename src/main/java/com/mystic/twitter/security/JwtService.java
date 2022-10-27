@@ -38,6 +38,9 @@ public class JwtService {
   }
 
   public boolean isValidToken(String token) {
+    if (Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getExpiration().before(new Date())) {
+      return false;
+    }
     return true;
   }
 
